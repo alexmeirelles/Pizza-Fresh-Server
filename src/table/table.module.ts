@@ -1,10 +1,11 @@
+import { PrismaModule } from './../prisma/prisma.module';
 import { Module } from '@nestjs/common';
-import { TableService } from './table.service';
 import { TableController } from './table.controller';
-import { PrismaModule } from 'src/prisma/prisma.module'; // < NOVA LINHA
+import { TableService } from './table.service';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [PrismaModule], // < NOVA LINHA
+  imports: [PrismaModule, PassportModule.register({ defaultStrategy: 'jwt' })],
   controllers: [TableController],
   providers: [TableService],
 })
